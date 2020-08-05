@@ -19,12 +19,15 @@ class FileRetrieveController extends Controller
             $resource->setPublish();
             $yandexFileInfo = $resource->toArray();
         } catch (\Exception $exception) {
-            abort(404);
-            return null;
+            return response()->json([
+                'status' => "err",
+                'msg' => "Yandex File not found"
+            ], 404);
         }
-        dd($yandexFileInfo);
-//        $response = Http::get($yandexFileInfo['file']);
 
-        return response()->file($yandexFileInfo['file']);
+        return response()->json([
+            'status' => "ok",
+            'public_url' => isset($yandexFileInfo['public_url']) ? $yandexFileInfo['public_url'] : null,
+        ]);
     }
 }
