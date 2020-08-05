@@ -27,7 +27,7 @@ class YandexAdapter
         if (!self::$initialized) {
             throw new \Exception("Yandex API not initialized");
         }
-        
+
         return self::$instance;
     }
 
