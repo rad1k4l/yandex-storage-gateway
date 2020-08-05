@@ -16,9 +16,12 @@ class FileUploaderController extends Controller
         $validated = $request->validated();
 
         try {
-            $yandex->getResource($validated['yandex_file_name'])
-                ->upload($validated['file_url']);
-        }catch (\Exception $exception) {
+            $resource = $yandex->getResource($validated['yandex_file_name']);
+            if (!$resource->isPublish()) {
+                $resource->setPublish(true);
+            }
+            $resource->upload($validated['file_url']);
+        } catch (\Exception $exception) {
             return response()->json([
                 'status' => "err",
                 'msg' => $exception->getMessage()
