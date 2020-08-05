@@ -13,6 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/test23423423', function () {
-    return view('welcome');
+Auth::routes();
+
+
+
+// load react js app
+Route::get('/{slug?}', function () {
+    return view('index');
 });
+
+
+
+
+//
+//Route::get('/home', 'HomeController@index')->name('home');
