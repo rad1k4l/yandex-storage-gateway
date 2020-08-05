@@ -20,10 +20,9 @@ export default class FileUpload extends React.Component {
     changePendingFilePublicUrlOnState(index, publicUrl) {
         let temp_pfiles = this.state.pendingFiles;
 
-        try
-        {
+        try {
             temp_pfiles[index].public_url = publicUrl;
-        }catch (e) {
+        } catch (e) {
             console.log(temp_pfiles);
         }
 
@@ -40,7 +39,7 @@ export default class FileUpload extends React.Component {
             getPublicUrl: function () {
                 let root_t = this;
                 this.interval = setInterval(() => {
-                    t.changePendingFilePublicUrlOnState(id,  "Checking...");
+                    t.changePendingFilePublicUrlOnState(id, "Checking...");
                     axios.get(getPublicUrlLink)
                         .then((response) => {
                             let data = response.data;
@@ -50,7 +49,7 @@ export default class FileUpload extends React.Component {
                             clearInterval(root_t.interval);
                         })
                         .catch((response) => {
-                            t.changePendingFilePublicUrlOnState(id,  "Not found...");
+                            t.changePendingFilePublicUrlOnState(id, "Not found...");
                         });
                 }, 2000);
             },
@@ -70,7 +69,7 @@ export default class FileUpload extends React.Component {
             yandex_file_name: this.state.yandex_file_name
         }).then(function (response) {
             let data = response.data;
-            t.addPendingFile(t.state.file_url, t.state.yandex_file_name, data.url, t.state.pendingFiles.length );
+            t.addPendingFile(t.state.file_url, t.state.yandex_file_name, data.url, t.state.pendingFiles.length);
         });
     }
 
