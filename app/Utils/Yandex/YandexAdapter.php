@@ -24,6 +24,10 @@ class YandexAdapter
      */
     public static function getInstance(): Disk
     {
+        if (!self::$initialized) {
+            throw new \Exception("Yandex API not initialized");
+        }
+        
         return self::$instance;
     }
 
@@ -33,10 +37,6 @@ class YandexAdapter
 
     public static function init()
     {
-        if (!self::$initialized) {
-            throw new \Exception("Yandex API not initialized");
-        }
-
         $disk = new Disk(env("YANDEX_API_KEY"));
         self::$instance = $disk;
         self::$initialized = true;
