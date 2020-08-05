@@ -113,6 +113,7 @@
       <path value="$PROJECT_DIR$/vendor/php-http/client-common" />
       <path value="$PROJECT_DIR$/vendor/php-http/curl-client" />
       <path value="$PROJECT_DIR$/vendor/zendframework/zend-diactoros" />
+      <path value="$PROJECT_DIR$/vendor/laravel/ui" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
